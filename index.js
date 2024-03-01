@@ -1,8 +1,9 @@
-
+// Required packages/ path to generateMarkdown file
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateMarkdown = require('./generateMarkdown');
 
+// Array of questions to be prompted.
 const questions = [
  {
     type: 'input',
@@ -62,12 +63,13 @@ const questions = [
 }
 ];
 
+// Create readme file
 function writeToFile(README, data) {
     fs.writeFile('README.md', data, (err) => {
   err ? console.log(err) : console.log('README file created')
     });
 }
-
+// Prompt questions, push data into generated file. 
 function init() {
     inquirer.prompt(questions).then((data) => {
   const readme = generateMarkdown(data);
